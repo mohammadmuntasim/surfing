@@ -1,0 +1,10 @@
+(function(){
+  document.write('<div id="adsatlas-3715535409" style="position:relative;width:300px;height:250px;overflow:hidden">');
+  document.write('<iframe src=\"https://ad.atdmt.com/as/direct;p=11237205186990;as=0;a=11237204772568;crs=11237204772280;cr=11237204772296;i.ts=1497099204/index.html?click=https://adclick.g.doubleclick.net/pcs/click%253Fxai%253DAKAOjsuBS9YOB1ylzD1J_y38xr1catuNQKOb1_jqpsCzsoRz_GdMKqJmQ5AS_qXgPY06lvHYr73rxzNgNCWsDbNBvemc3H2ns1QPeaxmeXjQ6RVC7FZqX9Z5sTY_M9NFvktyAM31AkAnhiutS9-sFgNSa91-WJToo5npBNfLZAluxqXi-TDn8hrnbbxDsGg9o7MoLrPuaOlZ4uhkm6zp8W5BXRkOA0KawLwCO2f3B4qxHPnOTmrGqJnGQqtvlq_HmyofIpBngCW1ujtU%2526sig%253DCg0ArKJSzLx8EkatBQszEAE%2526urlfix%253D1%2526adurl%253D\" width=\"300\" height=\"250\" frameborder=\"0\" scrolling=\"no\" marginheight=\"0\" marginwidth=\"0\" topmargin=\"0\" leftmargin=\"0\" allowtransparency=\"true\"></iframe><img src=\"https://ad.atdmt.com/i/img;p=11237205186990;as=0;a=11237204772568;crs=11237204772280;cr=11237204772296;llid=8821677798049745698;cache=2162111697\" />');
+  document.write('</div>');
+  document.write('<script src="https://cdn.atlassbx.com/FB/11122200772940/browser_features1488235112.js"></script><script type="text/javascript">(function(window){var data = window.getAtlasBrowserFeatures.getAllBrowserFeatures();new Image().src = "https://sig.atdmt.com/bf?iid=8821677798049745698&r=https%3A%2F%2Fscotch.io%2Ftutorials%2Fcustomize-the-browsers-scrollbar-with-css&bf=" + encodeURIComponent(data);})(window.inDapIF ? parent.window : window);</script>');
+  document.write('<script type="text/javascript" src="https://cdn.atlassbx.com/FB/11122200773193/atlas_tots1496946978.js"></script><script type="text/javascript">(function(window){window.initAtlasTOTS("adsatlas-3715535409","8821677798049745698","11237205186990","11237204772296","https://cdn.atlassbx.com/FB/11122200773193/atlas_tots1496946978.js");})(window);</script>');
+  document.write('');
+  document.write('');
+  document.close();
+})();

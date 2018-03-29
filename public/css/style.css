@@ -1,0 +1,194 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,600,700);
+@import url(assets/css/main.css);
+@import url(assets/css/bootstrap.min.css);
+@import url(assets/css/animations.min.css);
+@import url(assets/css/dncalendar-skin.min.css);
+@import url(assets/css/bootstrap-select.min.css);
+@import url(assets/css/font-awesome.min.css);
+@import url(assets/css/bootstrap-tagsinput.css);
+@import url(assets/css/jquery-ui.css);
+@import url(assets/css/fileinput.css);
+@import url(assets/css/landingpage.css);
+@import url(assets/css/myresponsive.css);
+@import url(assets/css/mobiles.css);
+@import url(assets/css/chats.css);
+.dd-single-album{padding: 5px;}
+div.album-img-div, div.add_more_album-img-div {
+    position: relative;
+    float: left;
+}
+span#add_more_image_preview img.col-md-2 {
+    object-fit: cover;
+    padding: 0px;
+}
+span#add_more_image_preview img {
+    border: 1px #f99104 solid;
+    height: 100px;
+    width: 100px;
+    display: inline;
+    float: left;
+    margin: 10px;
+}
+i.fa.fa-times.remove-img {
+    position: absolute;
+    margin-left: 8px;
+    margin-top: 8px;
+    z-index: 999;
+    color: #f99104;
+    border: 1px solid;
+    border-radius: 50%;
+    width: 20px;
+    text-align: center;
+    padding: 2px;
+    cursor: pointer;
+}
+label.add_more_image_preview2.add_more_upload_file {
+    height: 100px;
+    color: #ccc;
+    padding-top: 12px;
+    font-size: 35px;
+    line-height: 2;
+    margin-top: 10px;
+    width: 100px;
+    display: inline;
+    float: left;
+    margin-right: 10px;
+    border: 4px dotted #ccc;
+    cursor: pointer;
+    text-align: center;
+}
+input#add_more_img_album {
+    display: none;
+}
+a.deleet-my-album {
+    position: absolute;
+    top: 14px;
+    right: 15px;
+    color: #f99104;
+    padding: 1px 0px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 16px;
+    border: 1px solid;
+}
+.user-connection .col-md-3.listimage .hovertext {
+    display: block;
+    bottom: 0;
+    height: auto;
+    top: auto;
+    padding: 15px 0;
+}
+
+.dd-single-search-holder {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #efefef;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    padding: 15px;
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
+	-moz-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
+	-ms-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
+	-webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
+	-o-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.05);
+}
+.dd-search-avater-holder {
+    position: relative;
+    width: 150px;
+    float: left;
+    text-align: center;
+	margin-left: -15px;
+}
+.dd-round-avater {
+    width: 130px;
+    height: 130px;
+    border-radius: 4px;
+    display: inline-block;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+.dd-search-content-holder {
+    float: left;
+    width: 61%;
+}
+.dd-search-content-holder>h3 {
+    margin: 0 0 10px;
+    font-size: 20px;
+}
+.dd-search-content-holder>h3>a {
+	color:#333;
+}
+.dd-ddesignation {
+    background-color: #3d88ed;
+    color: #fff;
+    padding: 5px 10px;
+    display: inline-block;
+    border-radius: 4px;
+}
+.dd-ddesignation:hover{background-color: #f99104;}
+.dd-ddesignation-list>li {
+    display: inline-block;
+    margin-bottom: 5px;
+        margin-right: 2px
+}
+.dd-phone-number {
+    width: 100%;
+    float: left;
+	margin-bottom:10px;
+}
+.dd-phone-number>a {
+    border: 1px solid #f99104;
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #f99104;
+}
+.dd-phone-number:hover>a {
+    border: 1px solid #3d88ed;
+    color: #fff;
+	background-color: #3d88ed;
+}
+.dd-button-holder {
+    float: right;
+    position: relative;
+    max-width: 160px;
+}
+.dd-button-holder .dd-icon-btn {
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+}
+.dd-icon-btn {
+    display: inline-block;
+    border: 1px solid #f99104;
+    padding: 7px 0px;
+    text-align: center;
+    font-size: 14px;
+    position: relative;
+	color:#f99104;
+	border-radius:4px;
+}
+.dd-icon-btn.btn-1 {
+    background-color: #f99104;
+    color: #fff;
+}
+.dd-icon-btn.btn-2 {
+    background-color: #3d88ed;
+    border-color: #3d88ed;
+    color: #fff;
+}
+.dd-icon-btn.btn-2:hover {
+    background-color: #f99104;
+    color: #fff;
+	border-color: #f99104;
+}
+.dd-icon-btn.btn-1:hover {
+    background-color: #3d88ed;
+    border-color: #3d88ed;
+    color: #fff;
+}

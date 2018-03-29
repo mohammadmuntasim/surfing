@@ -1,0 +1,174 @@
+/*!
+ * Design and develop by RIZWANA ANSARI ( rizwanawork786@gmail.com ) at FUDUGO SOLUTIONS PVT. LTD. 
+ *
+ * Copyright 2017 www.fudugo.com
+ * Licensed Authorize by fudugosolutions@2017
+ */
+
+.dd-cover-holder .cover-edit-form {
+position: absolute;
+top: 40px;
+left: 15px;
+z-index: 0;
+}
+
+
+/*max-width 1200 and min-width 993 */
+
+
+
+/*@media only screen and (max-width: 1199px){ 
+.dd-search-bar {
+    width: 75%;
+}
+.sh-logo, .sh-right{
+  padding: 0 15px;
+}
+
+.dd-login-page .dd-signup-form {
+    margin-top: 30px;
+
+}
+.login-head .dd-social-login {
+    float: left;
+    width: 16%;
+}
+.sign_up_btn {
+    
+    padding: 11px 14px !important;
+    
+}
+}*/
+/*max-width 992 and min-width 768 */
+/*@media only screen and (max-width: 992px){ 
+.sh-logo img {
+    height: 50px;
+}
+.dd-login-page .dd-block-text .col-md-5.pull-right {
+    width: 100%;
+    margin: 0 auto;
+}
+.dd-login-page .dd-signup-form .col-md-6.pr {
+    padding-right:15px;
+}
+.dd-login-page .dd-signup-form .col-md-6.pl {
+    padding-left: 15px;
+}
+.dd-login-page .dd-signup-form .form-group>.col-md-3:last-child {
+    padding-right: 0px;
+}
+.dd-login-page .dd-text-space {
+    width: 100%;
+    float: left;
+
+    text-align: center;
+}
+.dd-login-page .dd-block-text .col-md-7.pull-left {
+    padding-left: 0;
+	width:100%;
+}
+.dd-login-page .dd-agree .checkbox {
+    float: left;
+    display: block;
+    width: 100%;
+}
+.dd-login-page .dd-gendar .col-md-3.padding {
+    float: left;
+}
+
+
+#app .main-content {
+padding: 30px 0 30px !important;
+}
+.dd-profile-holder .dd-userport .navbar-default.dd-navbar .navbar-nav>li>a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #656565;
+    padding: 15px 22px;
+}
+}*/
+
+/*max-width 767 and min-width 481 */
+/*@media only screen and (max-width: 767px){
+	
+	.dd-login-page .dd-text-space p {
+    color: #079cbc;
+    font-size: 17px;
+    padding-left: 10px;
+}
+	.searhlist .dd-single-add a {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+	text-align: center;
+}
+.nav-tabs > li{
+  width: auto;
+}
+
+#app .main-content {
+padding: 30px 0 30px !important;
+}
+	 }
+	 
+/*max-width 480 and min-width 361 */
+/*@media only screen and (max-width: 480px){ 
+.dd-login-page .dd-text-space p {
+    color: #079cbc;
+    font-size: 12px;
+    padding-left: 10px;
+	line-height: 13px;
+	}
+
+.searhlist .well a.pull-left {
+    float: none !important;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+.searhlist .well h4.media-heading {
+    margin-top: 20px;
+}
+.searhlist .well .media-body {
+    text-align: center;
+}
+.searhlist img.img-responsive.media-object {
+    width: 100%;
+     float:none; 
+    display: block;
+    margin: 0 auto;
+}
+.searhlist .dd-single-add a {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+	text-align: center;
+}
+#app .main-content {
+padding: 30px 0 30px !important;
+}
+}
+
+
+@media only screen and (max-width: 512px) {
+.sh-logo, .sh-right{
+padding: 0;
+}
+.sh-right ul li:first-child{
+ margin-left: 0;
+}
+.sh-right ul li{
+padding: 5px 8px;
+}
+}*/
+
+/*max-width 360 and min-width 320 */
+/*@media only screen and (max-width: 360px){ 
+.dd-login-page .dd-text-space p {
+    color: #079cbc;
+    font-size: 12px;
+    padding-left: 10px;
+	line-height: 13px;
+	}
+}*/
+

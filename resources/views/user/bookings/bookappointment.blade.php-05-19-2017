@@ -1,0 +1,185 @@
+<!-- Modal -->
+
+<div id="bookingModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Book Appointment <span></span></h4>
+			</div>
+			<div class="modal-bodys">
+				<section class="appointments">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="well-block">
+									<form action="{{url('/appointments')}}"  role="form" id="myBooking" data-toggle="validator"  class="profile-edit-form" method="post">
+										{{ csrf_field() }}
+										<!-- Form start -->
+										<input type="hidden" name="docid" value="{{ app('request')->input('ref_app')}}">
+										<input type="hidden" name="booking_date" id="booking_date" value="">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label" for="patient_type">PATIENT TYPE</label>
+													<select class="form-control selectpicker" id="patient_type" name="patient_type" required>
+														<option disabled="" selected="" value="">Select Patient Type</option>
+														<option value="existing">Existing Patient</option>
+														<option value="new">New Patient</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label" for="reason_id">REASON FOR VISIT</label>
+													<select class="form-control selectpicker" id="reason_id" name="reason_id" data-live-search="true" required >
+														<option disabled="" selected="" value="" disabled>Select Reason For Visit</option>
+														<option value="Illness">Illness</option>
+														<option value="General Consultation">General Consultation</option>
+														<option value="General Follow Up">General Follow Up</option>
+														<option value="Annual Pap Smear / GYN Exam">Annual Pap Smear / GYN Exam</option>
+														<option value="Annual Physical">Annual Physical</option>
+														<option value="Cardiovascular Screening Visit">Cardiovascular Screening Visit</option>
+														<option value="Flu Shot">Flu Shot</option>
+														<option value="New Patient Visit">New Patient Visit</option>
+														<option value="Pre-Surgery Checkup">Pre-Surgery Checkup</option>
+														<option value="Pre-Travel Checkup">Pre-Travel Checkup</option>
+														<option value="Prescription / Refill">Prescription / Refill</option>
+														<option value="STD (Sexually Transmitted Disease)">STD (Sexually Transmitted Disease)</option>
+													</select>
+												</div>
+											</div>
+											<!-- Insurance provider  -->
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label" for="insurance_provider">INSURANCE PROVIDER</label>
+													<select class="form-control selectpicker insurance_provider" id="insurance_provider" data-live-search="true"  name="insurance_provider" required>
+														<option selected="" value="">Select Insurance Provider</option>
+														 @foreach($searchdropdown['insurances'] as $doctordatas)
+										                  <option value="{{ $doctordatas }}">{{ $doctordatas }}</option>
+										                  @endforeach
+													</select>
+												</div>
+											</div>
+											<!-- Insurance plans  -->
+											<div class="col-md-6">
+												<div class="form-group" >
+													<label class="control-label" for="insurance_plan_id">INSURANCE PLAN</label>
+													<select class="form-control selectpicker insurance_palns" id="insurance_plan_id" name="insurance_plan_id" data-live-search="true" required >
+														<option value="" selected="">Select Insurance Plan</option>
+														
+													</select>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label" for="name">PATIENT’S FULL NAME</label>
+													<input id="name" name="name" type="text" data-toggle="tooltip" title="Full Name" placeholder="Name"  class="form-control input-md" value="{{Auth::user()->name}}" required>
+												</div>
+											</div>
+											<!-- Text input-->
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label" for="patientdob">DATE OF BIRTH</label>
+													@php ($userprofileaddb = $data['userMetaObj']->getUserMeta(['user_id' =>Auth::user()->id,'user_meta_key'=>'user_dob']) )
+													@php($checkgenderb='')
+													@if(!empty($userprofileaddb))
+													@foreach($userprofileaddb as $userMetaAddb)   
+													@php ($checkgenderb = $userMetaAddb->user_meta_value  ) 
+													@endforeach
+													@endif
+													<input id="patientdob" name="patientdob" type="text" required placeholder="Date of Birth" data-toggle="tooltip" class="form-control input-md" value="{{$checkgenderb}}" required>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label" for="email">EMAIL</label>
+													<input id="email" name="email" type="text" data-toggle="tooltip" title="E-mail" placeholder="E-Mail" class="form-control input-md" value="{{Auth::user()->email}}" required>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label" for="contact_number">CONTACT NUMBER</label>
+													@php ($userprofileaddm = $data['userMetaObj']->getUserMeta(['user_id' =>Auth::user()->id,'user_meta_key'=>'user_number']) )
+													@php($checkgenderm='')
+													@if(!empty($userprofileaddm))
+													@foreach($userprofileaddm as $userMetaAddm)   
+													@php ($checkgenderm = $userMetaAddm->user_meta_value  ) 
+													@endforeach
+													@endif
+													<input id="contact_number" name="contact_number"  data-toggle="tooltip" title="Contact Number" type="text" placeholder="(xxx)xxx-xxxx" class="form-control input-md" @if(!empty($checkgenderm)) value="{{$checkgenderm}}" @endif  required  min="10" max="10"  maxlength="14"  onkeypress="return isNumber(event)">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label" for="booking_time">Book Time</label>
+													<input id="booking_time" readonly  data-toggle="modal" data-target="#myAppoTime" name="booking_time" type="text" title="Book Time" placeholder="Choose Time" class="timepicker form-control input-md" value=" " required>
+<div id="myAppoTime" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header"> 
+           <button type="button" class="btn btn-default pull-right" onclick="$('#myAppoTime').modal('hide');">Close</button>
+        <h4 class="modal-title">Available Times</h4>
+      </div>
+      <div class="modal-body">
+        <p>Not Available</p>
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+</div>
+											</div>
+											<!-- Select Basic -->
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label" for="patient_gender">GENDER</label>
+													@php ($userprofileadd = $data['userMetaObj']->getUserMeta(['user_id' =>Auth::user()->id,'user_meta_key'=>'user_gender']) )
+													@php($checkgender='')
+													@if(!empty($userprofileadd))
+													@foreach($userprofileadd as $userMetaAdd)   
+													@php ($checkgender = $userMetaAdd->user_meta_value  ) 
+													@endforeach
+													@endif
+													<input class="patient_gender" id="patient_gender" name="patient_gender" type="radio" title="Female" class="form-control input-md" value="female" @if($checkgender=='female') checked @endif required><span>Female</span>
+													<input class="patient_gender" id="patient_gender" name="patient_gender" type="radio" title="Male" class="form-control input-md" value="male" @if($checkgender=='male') checked @endif required><span>Male</span>
+												</div>
+											</div>
+
+											<div class="col-md-12">
+			<div class="form-group">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" id="terms" data-error="Please agree terms and conditions" required="">
+              I agree to the <a href="{{url('/')}}storage/documents/Terms-of-Use.pdf" target="_blank" >Terms &amp; Conditions</a> , <a href="{{url('/')}}storage/documents/PRIVACY-%20POLICY.pdf" target="_blank">Privacy Policy</a> and <a href="javascript:;">HIPPA Regulation</a>
+            </label>
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+												
+											</div>
+											<!-- Button -->
+											<div class="col-md-12">
+												<div class="form-group">
+													<button id="singlebutton" name="singlebutton" class="btn btn-default">Make An Appointment</button>
+												</div>
+											</div>
+										</div>
+									</form>
+									<!-- form end -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="modal-footer">
+				<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+			</div>
+		</div>
+	</div>
+</div>

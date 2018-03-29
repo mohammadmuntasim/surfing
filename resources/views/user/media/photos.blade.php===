@@ -1,0 +1,216 @@
+@extends('layouts.app')
+@section('content')
+
+<section class="main-content">
+    <div class="dd-userport">
+        <div class="container">
+            <div class="row"> 
+                @include('user.profilehead')
+            </div>
+        </div>
+    </div>  
+  	<div class="container">
+    	<div class="row">
+
+            <div class="dd-common-inner-title">
+               @if(empty(app('request')->input('ref_app')))
+                <h3 class="photo-headings">Photos 
+                  <h5 class="pull-left">
+                    <button type="button" class="btn btn-info pull-left" data-toggle="modal" data-target="#albumModel">
+                      Add Album</button>
+                  </h5>
+                      <h5 class="pull-left">
+                       <button type="button" class="btn btn-info pull-left" data-toggle="modal" data-target="#albumModel">Add Photo</button>
+                     </h5> 
+                </h3> 
+               @endif
+            </div>
+    	</div>
+        <div class="row">
+          @if(empty(app('request')->input('ref_app')))
+  			<div class="col-md-9 col-xs-12 pl dd-memories-photo">
+           
+        		<ul class="nav nav-tabs">
+                	<li  @if(app('request')->input('memoriesid')) class="" @else class="active" @endif><a data-toggle="tab" href="#home">All Photos</a></li>                
+                 	<li @if(app('request')->input('memoriesid')) class="active" @endif><a data-toggle="tab" href="#menu1">Your Album</a></li>
+            	</ul>
+         		<div class="tab-content">
+        			<div id="home" @if(app('request')->input('memoriesid')) class="tab-pane dd-mix-photos fade" @else class="tab-pane dd-mix-photos fade in active" @endif>                      
+              			<div class="main-content-holder-photobox" >
+                         	<div class="dd-timeline-posts-holder fw" >
+                            	<div class="dd-gallery-4-column">
+                                	@foreach($data['allimages'] as $userphotos)
+                            		<div class="col-md-3" id="media{{$userphotos->id}}">
+                                 		<div class="dd-gallery-item">
+                                        	<figure class="dd-gallery-image-holder" style="background-image:url({{ $userphotos->media }});">
+                                           	</figure>
+                                          	<div class="dd-gallery-content">
+                                              	<a class="dd-light-box" href="#" data-image-id="" data-toggle="modal" data-title="This is my title" data-caption="Some lovely red flowers" data-image="{{ $userphotos->media }}" data-target="#image-gallery"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                              	<a href="javascript:void(0);" onclick="deletemediaImage(this)" data-imageid="{{$userphotos->id}}" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                          	</div>
+                                   		</div>
+                                 	</div>
+                                	@endforeach
+                              	</div>
+                     		</div>
+                      	</div>
+                  	</div><!-- Mix Photos Tab End   -->                  
+                    <div id="menu1" @if(app('request')->input('memoriesid')) class="tab-pane dd-mix-albums fade in active" @else class="tab-pane dd-maax-albums fade" @endif >
+                    	<div class="main-content-holder-photobox" >
+                 			<div class="main-content-holder-album" ><!-- ALBUM LIST -->
+                          		<div class="dd-timeline-posts-holder fw">
+                                 	<div class="dd-gallery-4-column">
+                                    	<h2  class="albname">
+                                     	@if(!empty( app('request')->input('aname')))  
+                                        {{ app('request')->input('aname') }}
+                                        	<span class="editmealbum" data-toggle="modal" data-target="#editalbumname">
+                                            	<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                           	</span>
+            							@endif  
+                                       	</h2>
+                                        @if(!empty($data['myAlbumsPic']))
+                                       	@foreach( $data['myAlbumsPic'] as $userphotos)
+                                     	<div class="col-md-3" id="media{{$userphotos->id}}">
+                                      		<div class="dd-gallery-item">
+                                            	<figure class="dd-gallery-image-holder" style=" background-image:url('{{ $userphotos->media }}');">
+                                           		</figure>
+                                                <div class="dd-gallery-content">
+                                                    <a class="dd-light-box" href="#" data-image-id="" data-toggle="modal" data-title="This is my title" data-caption="Some lovely red flowers" data-image="{{ $userphotos->media }}" data-target="#image-gallery"><i class="fa fa-search" aria-hidden="true"></i></a>
+                                                    <a href="javascript:void(0);" onclick="deletemediaImage(this)" data-imageid="{{$userphotos->id}}" ><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                                </div>
+                                      		</div>
+                                  		</div>
+                                      	@endforeach
+                                       	@endif
+                                  	</div>
+                      			</div>
+                         	</div>
+                           	@php($allmyalbum = $data['newAlbum']->myAllAlbum(['user_id' => $data['currentUserid']]))
+        					      @foreach($allmyalbum as $memories)
+                           	<div class="col-sm-3 col-xs-12 dd-single-album" >
+                            	<a href="{{URL::current()}}/?memoriesid={{ $data['encrypt']->encryptIt($memories->id)}}&aname={{$memories->album_name}}">
+                                    @php($mycoveralbum = $data['newAlbum']->coveralbum(['album_id' =>$memories->id])) 
+                                    @if(!empty($mycoveralbum)) 
+                                        <figure class="dd-album-cover" style="background-image:url({{url('/')}}{{$mycoveralbum->media}})">
+                                        </figure>
+                                    @else
+                                        <!--<div class="blank-album text-center"> Empty Album</div>-->
+                                    @endif
+                                    	<div class="dd-album-info">
+                                        <h6>                                               
+                                            @if(!empty($memories->album_name))  
+                                            {{$memories->album_name}}
+                                            @else
+                                                Untitled Album
+                                            @endif  
+                                        </h6>
+                                        @php($totalpics =  $data['newAlbum']->totalpic(['album_id' => $memories->id]))
+                                        <strong>{{$totalpics}} Photos</strong>
+                                    </div>
+                                </a>
+                    		</div>
+                            @endforeach
+                    		<hr>
+                    	</div>
+                  	</div>
+                </div>
+           
+        </div>
+         @else
+         <div class="col-md-9 col-xs-12">
+            @include('user.media.allPhotos')
+          </div>
+           @endif
+            <div class="col-md-3 pr">
+              	<div class="dd-advertise-holders">
+                	@include('user.sidebar')
+            	</div>
+         	</div>
+      	</div>
+  	</div>
+</section>
+
+
+
+
+
+
+<!-- Album Modal -->
+<div class="modal fade" id="albumModel" role="dialog">
+    <div class="modal-dialog  modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Create Your Album</h4>
+        </div>
+        <div class="modal-body">
+          <form action="/photoalbum" method="post" enctype="multipart/form-data" onsubmit="return validate()">
+           {{ csrf_field() }}
+         
+            <h6>Note: Supported image format: .jpeg, .jpg, .png.</h6>
+            <div id="alert1" class="alert-danger hideme"> Please Upload Image in Album</div>
+
+                  
+           <div class="form-group">
+                <br>
+                <label for="usr">Album Name:</label>
+                <input type="text" placeholder="Enter album Name" id="albumname" name='albumname' class="form-control vol-md">
+                <div id="alert2" class="alert-danger hideme" >Please Enter Name of Album</div>
+           </div>
+            <div style="clear:both">
+              <span id="image_preview"></span>
+               <label for="upload_file" class="image_preview2">
+                <i class="fa fa-plus"></i><br> Upload Photos
+                </label>
+            </div>
+            <div style="clear:both" >  
+             
+              <input type="file" id="upload_file" name="upload_file[]" onchange="preview_image();" multiple/>
+             
+               <input type="submit" class="btn btn-info center-block" value="Upload" id="selectedButton"/>
+            </div> 
+         </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+   <div id="editalbumname" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            
+            <h4 class="modal-title">{{app('request')->input('aname')}}</h4>
+          </div>
+          <div class="modal-body">
+            <h4>Rename Your Album</h4>
+            
+             <form class="form-inline" action="/photoalbum" method="post">
+              {{ csrf_field() }}
+              <div class="form-group">
+                  <input type="text" class="form-control myname" id="albumnewname" name="renamed" placeholder="Search" value="{{app('request')->input('aname')}}">
+                  <input type="hidden" value="{{app('request')->input('memoriesid')}}" id="hiddenid" name="hiddenid">
+              </div>
+                  <button class="btn btn-default renameit" type="submit" name="renamealbum" >Rename it</button>
+            </form>
+          </div>  
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+  </div>
+
+
+ @endsection

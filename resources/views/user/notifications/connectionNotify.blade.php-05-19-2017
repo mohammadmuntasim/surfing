@@ -1,0 +1,43 @@
+@if($notifys->post_id!=0)
+ <li class="dd-note-list"> 
+ 	<style type="text/css">
+ 	.deletedrqs .fa{font-size:20px;}
+ 	</style>
+                             
+                              <?php
+                              $now = Carbon\Carbon::now('America/New_York');
+                              $ends=$notifys->created_at;
+                              $bn=$data['getNotification']->timeDifferences($ends,$now);
+                              ?>
+                             <!--  <span class="dd-notification-title">Connection Notifications</span> -->
+                          
+                            
+                                @php($cnuser=$data['getNotification']->getUserConnectionSingle($notifys->post_id))
+                                @php($requestusername='')
+                                @if(!empty($cnuser))
+                                @foreach($cnuser as $uservalue)
+
+                                 
+                                  @if($uservalue->user_id!=Auth::user()->id)
+                                  @php($requestusername=$data['userdatabyid']->getUserData(['id' =>$uservalue->user_id]))
+                                  @else
+                                  @php($requestusername=$data['userdatabyid']->getUserData(['id' =>$uservalue->connect_user_id]))
+                                  @endif
+                                 <strong> {{$requestusername[0]->name }}</strong>
+                                  <div class="pull-right">
+                                    <a href="javascript:void(0)" onclick="requestfunction(this)" id="del-{{ $uservalue->connect_user_id }}" class="deletedrqs"  title="Delete Request"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                    <a href="javascript:void(0)" onclick="requestfunction(this)" id="{{ $uservalue->connect_user_id }}" class="deletedrqs" title="Accept Request"><i class="fa fa-check-square" aria-hidden="true"></i></a>
+                                    </div>
+
+                              <span>{{$bn}}</span>
+                                   
+                                @endforeach
+                                @endif
+
+                            
+                          
+                           
+                             
+</li>
+@endif
+

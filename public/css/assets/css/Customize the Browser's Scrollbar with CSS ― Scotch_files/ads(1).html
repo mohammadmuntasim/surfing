@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://s3.amazonaws.com/creatives.spot.im/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <title>Spot.IM</title>
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0
+            }
+
+            a, img {
+                display: block;
+                width: 100%;
+                height: 100%
+            }
+        </style>
+    </head>
+    <body marginwidth="0" marginheight="0">
+        <a target="_top" id="link" href="https://shoptagr.lpages.co/spotim-video-lp-ad-2"><img alt="creative" src="./300x250_2.gif"></a>
+        <script>
+            /**
+             * Returns a random integer between min (inclusive) and max (inclusive)
+             * Using Math.round() will give you a non-uniform distribution!
+             */
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            var adNumber = getRandomInt(1, 3);
+            var image = "https://s3.amazonaws.com/creatives.spot.im/300x250_" + adNumber + ".gif";
+            var link = document.getElementById('link');
+            link.href = "https://shoptagr.lpages.co/spotim-video-lp-ad-" + adNumber;
+            link.innerHTML = '<img alt="creative" src="' + image + '"/>';
+        </script>
+    
+</body></html>
